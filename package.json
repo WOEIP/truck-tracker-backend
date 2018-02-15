@@ -1,0 +1,20 @@
+{
+  "name": "traffic-counter-backend",
+  "private": true,
+  "version": "0.0.0",
+  "description": "Backend for the WOEIP traffic counter web application.",
+  "license": "UNLICENSED",
+  "main": "index.js",
+  "scripts": {
+    "test": ""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/motching/traffic-counter.git"
+  },
+  "author": "West Oakland Environmental Indicators Project (http://woeip.org) ",
+  "bugs": {
+    "url": "https://github.com/motching/traffic-counter/issues"
+  },
+  "homepage": "https://github.com/motching/traffic-counter/issues#readme"
+}
