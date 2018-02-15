@@ -16,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/motching/traffic-counter/issues"
   },
-  "homepage": "https://github.com/motching/traffic-counter/issues#readme"
+  "homepage": "https://github.com/motching/traffic-counter/issues#readme",
+  "dependencies": {
+    "convict": "^4.0.2"
+  }
 }
