@@ -21,9 +21,11 @@
   "homepage": "https://github.com/motching/traffic-counter/issues#readme",
   "dependencies": {
     "convict": "^4.0.2",
+    "knex": "^0.14.4",
     "koa": "^2.5.0",
     "koa-router": "^7.4.0",
-    "koa-static": "^4.0.2"
+    "koa-static": "^4.0.2",
+    "pg": "^7.4.1"
   },
   "devDependencies": {
     "ava": "^0.25.0",

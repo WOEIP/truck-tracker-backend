@@ -19,6 +19,38 @@ const config = convict({
     env: 'PORT',
     arg: 'port',
   },
+  database: {
+    host: {
+      doc: 'hostname for the database server',
+      format: String,
+      default: null,
+      env: 'PGHOST',
+    },
+    port: {
+      doc: 'port for the database server',
+      format: 'port',
+      default: null,
+      env: 'PGPORT',
+    },
+    user: {
+      doc: 'user to connect to database server as',
+      format: String,
+      default: null,
+      env: 'PGUSER',
+    },
+    password: {
+      doc: 'password for the database user',
+      format: String,
+      default: null,
+      env: 'PGPASSWORD',
+    },
+    database: {
+      doc: 'name of the database to use on the database server',
+      format: String,
+      default: null,
+      env: 'PGDATABASE',
+    },
+  },
 });
 
 const configFile = `${config.get('env')}.json`;
