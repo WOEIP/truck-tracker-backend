@@ -1,15 +1,19 @@
 'use strict';
 
 const path = require('path');
+const {Model} = require('objection');
 
 const Koa = require('koa');
 const serve = require('koa-static');
 const Router = require('koa-router');
 
 const config = require('./config');
+const knex = require('./lib/knex');
 
 const app = new Koa();
 const router = new Router();
+
+Model.knex(knex);
 
 router.get('/', ctx => {
   ctx.body = 'Hello World';
