@@ -2,12 +2,13 @@
 
 ### Requirements
 
- - Node.js >= 7.4.0
- - PostgresSQL server
+  - Node.js >= 7.4.0
+  - PostgreSQL server >= 9.1  *(9.5 recommended)*
+    - The following instructions were tested on PostgeSQL 9.5, any version of Postgres greater than 9.1 will probably work but ymmv.
 
 ### Getting Started
 
-  1. Make sure all of the [requirements](#Requirements) are installed and running on your computer.
+  1. Make sure all of the [requirements](#requirements) are installed and running on your computer.
   2. Provide the database connection information to the application. This can be done one of two ways
       - Create a `development.json` in `config/secret` and populate it with the your connection information:
         ```json
@@ -20,7 +21,7 @@
         ```
       - Create environment variables (as specified in `config/index.js`) to store your credentials. Ideally these should be placed in your `.bashrc` or `.profile` so you don't have to set them up every time. <br> *Tip*: if you set up your environment variables this way [`psql` will also pick them up](https://www.postgresql.org/docs/9.2/static/libpq-envars.html), so you don't have to provide all of the arguments every time you run the command.
      ```bash
-      # PostgresSQL Credentials
+      # PostgreSQL Credentials
       export PGHOST="localhost"
       export PGUSER="postgres"
       export PGPASSWORD="yourpasswordhere"
