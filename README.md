@@ -29,11 +29,18 @@
       ```bash
       PGPASSWORD="yourpasswordhere" psql --host localhost --user postgres --dbname postgres --command "CREATE DATABASE traffic_counter;"
       ```
-  4. Install all of the dependencies for this project by running `npm install` <br> *Note*: This and the following command must be run within the `backend` directory
+  4. Install all of the dependencies for this project by running `npm install` <br> *Note*: This and the following commands must be run within the `backend` directory
       ```bash
       npm install
       ```
-  5. Start coding! :tada:
+
+  5. Run the migrations to set up the database as required by the application.
+      ```bash
+      npx knex migrate:latest
+      ```
+
+  6. Start coding! :tada:
+
 
 ## Technologies
 ### Server
