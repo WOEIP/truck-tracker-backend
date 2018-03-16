@@ -23,7 +23,7 @@
      ```bash
       # PostgreSQL Credentials
       export PGHOST="localhost"
-      export PGUSER="postgres"
+      export PGUSER="postgres"   # note: if you installed postgres using homebrew this should be your mac username
       export PGPASSWORD="yourpasswordhere"
       ```
   3. Create the `traffic_counter` table in postgres. Replace "yourpasswordhere" with your actual database password and the command below should create the database for you. <br> *Note*: depending on your installation you might have to change the name of the user as well
@@ -34,7 +34,10 @@
       ```bash
       npm install
       ```
-
+  5. Set the `NODE_ENV` environment variable. This environment variable is what the config framework (`convict`) uses to determine whether to use the production or the development config.
+     ```bash
+     export NODE_ENV="development"
+     ```
   5. Run the migrations to set up the database as required by the application.
       ```bash
       npx knex migrate:latest
