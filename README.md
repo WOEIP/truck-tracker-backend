@@ -50,6 +50,7 @@
 ### Server
 - [`Koa`](http://koajs.com/#introduction): Web framework that takes care of some of the heavy lifting associated with writing a web application
   - [`koa-router`](https://github.com/alexmingoia/koa-router#readme): Router for requests to the backend, allows for attaching "handler" functions based on router and method matched
+  - [`koa-body`](https://github.com/dlau/koa-body): body parsing middleware, allows for easy access to information sent in the body by clients
   - [`koa-static`](https://github.com/koajs/static#readme): A static file server, allows for specification of a folder and then all files out of that folder will be served
 - [`convict`](https://github.com/mozilla/node-convict#readme): schema derived config management tool, configuration parameters can be specified via `.json` files, environment variables and via command-line arguments
 - [`nodemon`](https://github.com/remy/nodemon#nodemon): nodemon will watch the files in the directory in which nodemon was started, and if any files change, nodemon will automatically restart your node application.

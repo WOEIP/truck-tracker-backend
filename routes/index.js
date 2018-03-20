@@ -18,7 +18,7 @@ fs.readdirSync(__dirname)
   .forEach(file => {
 
     const router = require(path.join(__dirname, file));
-    const route = path.rootname(file, path.extname(file));
+    const route = path.basename(file, path.extname(file));
 
     root.use(`/${route}`, router.routes());
 
