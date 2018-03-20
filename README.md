@@ -62,6 +62,8 @@
     - the [built-in assertion library](https://github.com/avajs/ava#assertions) allows for easy validation of test results
 - [`testdouble`](https://github.com/testdouble/testdouble.js#readme): library that helps with creating mocks and stubbing out dependencies for testing
     - [Simple intro video to library and dependency mocking](http://blog.testdouble.com/posts/2016-06-05-happier-tdd-with-testdouble-js)
+- [`axios`](https://github.com/axios/axios): HTTP client for node.js, used for starting up the server and ensuring that it respondes correctly to HTTP requests
+- [`incito`](https://github.com/gurpreetatwal/incito): a small helper library for starting the server on a random port
 
 ## Organization
 ```

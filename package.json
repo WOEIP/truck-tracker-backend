@@ -30,6 +30,8 @@
   },
   "devDependencies": {
     "ava": "^0.25.0",
+    "axios": "^0.18.0",
+    "incito": "^1.1.0",
     "nodemon": "^1.14.12",
     "testdouble": "^3.5.0"
   }
