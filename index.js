@@ -1,18 +1,14 @@
 'use strict';
 
 const path = require('path');
-const {Model} = require('objection');
 
 const Koa = require('koa');
 const serve = require('koa-static');
 
 const config = require('./config');
-const knex = require('./lib/knex');
 const router = require('./routes');
 
 const app = new Koa();
-
-Model.knex(knex);
 
 app.use(serve(path.join(__dirname, 'static')));
 app.use(router.routes());
