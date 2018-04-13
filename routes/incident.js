@@ -1,8 +1,10 @@
 'use strict';
 
 const Router = require('koa-router');
-const Incident = require('../models/Incident');
 const parser = require('koa-body');
+
+const Incident = require('../models/Incident');
+const {ValidationError} = Incident;
 
 const parsers = {
   query: parser({urlencoded: true, multipart: false, json: false}),
@@ -13,22 +15,19 @@ const parsers = {
 const incident = new Router();
 
 incident.get('/', async (ctx, next) => {
-  ctx.body = 'Hello World';
-  await next();
+  ctx.body = await Incident.query();
 });
 
 incident.post('/', parsers.json, async (ctx, next) => {
-  ctx.body = 'created a new incident';
-  ctx.body += ctx.request.body;
-  await next();
+  ctx.body = await Incident.query().insert(ctx.request.body).returning('*');
 });
 
 incident.get('/:id', async (ctx, next) => {
-  ctx.body = 'incident ' + ctx.params.id;
-  await next();
+  ctx.body = await Incident.query().findById(ctx.params.id);
 });
 
 incident.patch('/:id', parsers.json, async (ctx, next) => {
+  // TODO
   ctx.body = 'updated incident' + ctx.params.id;
   await next();
 });
