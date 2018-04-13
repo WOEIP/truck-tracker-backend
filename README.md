@@ -56,6 +56,8 @@
 - [`nodemon`](https://github.com/remy/nodemon#nodemon): nodemon will watch the files in the directory in which nodemon was started, and if any files change, nodemon will automatically restart your node application.
 - [`kenx`](http://knexjs.org) : SQL query builder, allows for the usage of a javascript api to write SQL queries
   - [`objection`](http://vincit.github.io/objection.js/): Object relation mapper (ORM) that sits on top of Knex, introduces the concept of Models
+- [`lodash`](https://lodash.com/docs/): a collection of helper functions to assist with commonly performed operations
+- [`moment`](https://momentjs.com/docs): "Parse, validate, manipulate, and display dates and times in JavaScript"
 
 ### Testing
 - [`ava`](https://github.com/avajs/ava#readme): Test runner with built-in assertions

@@ -26,6 +26,8 @@
     "koa-body": "^2.5.0",
     "koa-router": "^7.4.0",
     "koa-static": "^4.0.2",
+    "lodash": "^4.17.5",
+    "moment": "^2.22.0",
     "objection": "^1.0.0",
     "pg": "^7.4.1"
   },
