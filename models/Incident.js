@@ -9,7 +9,7 @@ const UNIX_EPOCH_MAX = 2147483647;  // 2^31 - 1
 class Incident extends BaseModel {
 
   static get tableName() {
-    return 'Incident';
+    return 'incident';
   }
 
   static get jsonSchema() {
