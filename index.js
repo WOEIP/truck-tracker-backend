@@ -7,10 +7,12 @@ const serve = require('koa-static');
 
 const config = require('./config');
 const router = require('./routes');
+const middleware = require('./lib/middleware');
 
 const app = new Koa();
 
 app.use(serve(path.join(__dirname, 'static')));
+app.use(middleware.validationErorHandler);
 app.use(router.routes());
 app.use(router.allowedMethods());
 
