@@ -13,7 +13,9 @@ test('new Enum()', t => {
 
   t.is(typeof numbers.ONE, 'symbol');
   t.is(typeof numbers.TWO, 'symbol');
-  t.true(numbers.values instanceof Set);
+  t.true(Array.isArray(numbers.values));
+  t.true(numbers.values.includes('ONE'));
+  t.true(numbers.valueSet instanceof Set);
 
 });
 

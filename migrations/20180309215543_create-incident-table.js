@@ -6,7 +6,7 @@ async function up(knex) {
 
   await knex.schema.createTable('incident', function(table) {
     table.uuid('id').primary().defaultTo(knex.raw('uuid_generate_v4()'));
-    table.enum('truck_type', [TRUCK_TYPES.values()]).notNullable();
+    table.enum('truck_type', TRUCK_TYPES.values).notNullable();
 
     /**
      * LAT-LONG are stored with 9 degrees of precision and a scale of 6

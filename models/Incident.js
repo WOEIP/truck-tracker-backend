@@ -17,7 +17,7 @@ class Incident extends BaseModel {
       type: 'object',
       required: ['truckType', 'startLat', 'startLon', 'endLat', 'endLon', 'reportedAt'],
       properties: {
-        truckType: {enum: TRUCK_TYPES.values()},
+        truckType: {enum: TRUCK_TYPES.values},
         startLat: {type: 'number', minimum: -90, maximum: 90},
         startLon: {type: 'number', minimum: -180, maximum: 180},
         endLat: {type: 'number', minimum: -90, maximum: 90},
