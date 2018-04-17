@@ -4,6 +4,7 @@ const path = require('path');
 
 const Koa = require('koa');
 const serve = require('koa-static');
+const cors = require('@koa/cors');
 
 const config = require('./config');
 const router = require('./routes');
@@ -12,6 +13,11 @@ const middleware = require('./lib/middleware');
 const app = new Koa();
 
 app.use(serve(path.join(__dirname, 'static')));
+app.use(cors({
+  // todo this should prolly be in config
+  origin: 'localhost',
+  allowHeaders: ['Origin',  'Content-Type'],
+});
 app.use(middleware.validationErrorHandler);
 app.use(router.routes());
 app.use(router.allowedMethods());
