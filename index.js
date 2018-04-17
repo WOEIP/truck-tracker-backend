@@ -12,7 +12,7 @@ const middleware = require('./lib/middleware');
 const app = new Koa();
 
 app.use(serve(path.join(__dirname, 'static')));
-app.use(middleware.validationErorHandler);
+app.use(middleware.validationErrorHandler);
 app.use(router.routes());
 app.use(router.allowedMethods());
 
