@@ -17,7 +17,7 @@ app.use(cors({
   // todo this should prolly be in config
   origin: 'localhost',
   allowHeaders: ['Origin',  'Content-Type'],
-});
+}));
 app.use(middleware.validationErrorHandler);
 app.use(router.routes());
 app.use(router.allowedMethods());
