@@ -15,7 +15,7 @@ const app = new Koa();
 app.use(serve(path.join(__dirname, 'static')));
 app.use(cors({
   // todo this should prolly be in config
-  origin: 'localhost',
+  origin: '*',
   allowHeaders: ['Origin',  'Content-Type'],
 }));
 app.use(middleware.validationErrorHandler);

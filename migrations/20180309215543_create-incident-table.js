@@ -4,6 +4,7 @@ const {TRUCK_TYPES} = require('../lib/constants');
 
 async function up(knex) {
 
+    console.log(TRUCK_TYPES.values);
   await knex.schema.createTable('incident', function(table) {
     table.uuid('id').primary().defaultTo(knex.raw('uuid_generate_v4()'));
     table.enum('truck_type', TRUCK_TYPES.values).notNullable();
