@@ -25,4 +25,5 @@ before_script:
 
 script:
   - npx knex migrate:latest
+  - npm run lint
   - npm test
