@@ -3,14 +3,13 @@
 const _ = require('lodash');
 const moment = require('moment');
 
-const {BaseModel} = require('.');
 const {TRUCK_TYPES} = require('../lib/constants');
+const {BaseModel} = require('.');
 
-const ONE_DAY =  60 * 24;           // 60 minute/hour * 24 hour/day
-const UNIX_EPOCH_MAX = 2147483647;  // 2^31 - 1
+const ONE_DAY = 60 * 24; // 60 minute/hour * 24 hour/day
+const UNIX_EPOCH_MAX = 2147483647; // 2^31 - 1
 
 class Incident extends BaseModel {
-
   static get tableName() {
     return 'incident';
   }
@@ -33,21 +32,27 @@ class Incident extends BaseModel {
         },
         idlingDuration: {type: 'number', minimum: 0, maximum: ONE_DAY},
         reportedAt: {type: 'number', minimum: 0, maximum: UNIX_EPOCH_MAX},
-      }
+      },
     };
   }
 
   $formatDatabaseJson(json) {
     json = super.$formatDatabaseJson(json);
 
-    const formatted = _.pick(json, ['truck_type', 'idling_duration', 'reported_at']);
+    /* eslint-disable camelcase */
+    const formatted = _.pick(json, [
+      'truck_type',
+      'idling_duration',
+      'reported_at',
+    ]);
     formatted.start_lat = _.get(json, 'start.lat');
     formatted.start_lon = _.get(json, 'start.lon');
     formatted.end_lat = _.get(json, 'end.lat');
-    formatted.end_lon =  _.get(json, 'end.lon');
+    formatted.end_lon = _.get(json, 'end.lon');
 
     // convert unix timestamps into ISO 8601 strings for postgres
     formatted.reported_at = moment.unix(json.reported_at).format();
+    /* eslint-enable */
 
     return formatted;
   }
@@ -70,7 +75,6 @@ class Incident extends BaseModel {
 
     return formatted;
   }
-
 }
 
 module.exports = Incident;

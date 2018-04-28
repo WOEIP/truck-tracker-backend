@@ -13,11 +13,13 @@ const middleware = require('./lib/middleware');
 const app = new Koa();
 
 app.use(serve(path.join(__dirname, 'static')));
-app.use(cors({
-  // todo this should prolly be in config
-  origin: '*',
-  allowHeaders: ['Origin',  'Content-Type'],
-}));
+app.use(
+  cors({
+    // TODO this should prolly be in config
+    origin: '*',
+    allowHeaders: ['Origin', 'Content-Type'],
+  }),
+);
 app.use(middleware.validationErrorHandler);
 app.use(router.routes());
 app.use(router.allowedMethods());
