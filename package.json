@@ -1,5 +1,5 @@
 {
-  "name": "traffic-counter-backend",
+  "name": "truck-tracker-backend",
   "private": true,
   "version": "0.0.0",
   "description": "Backend for the WOEIP traffic counter web application.",
@@ -12,13 +12,13 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/motching/traffic-counter.git"
+    "url": "git+https://github.com/WOEIP/truck-tracker-backend.git"
   },
-  "author": "West Oakland Environmental Indicators Project (http://woeip.org) ",
+  "author": "West Oakland Environmental Indicators Project (http://woeip.org)",
   "bugs": {
-    "url": "https://github.com/motching/traffic-counter/issues"
+    "url": "https://github.com/WOEIP/truck-tracker-backend/issues"
   },
-  "homepage": "https://github.com/motching/traffic-counter/issues#readme",
+  "homepage": "https://github.com/WOEIP/truck-tracker-backend#readme",
   "dependencies": {
     "@koa/cors": "^2.2.1",
     "convict": "^4.0.2",

@@ -1,0 +1,28 @@
+language:
+  - node_js
+
+node_js:
+  - 8
+
+cache:
+  directories:
+    - $HOME/.npm
+    - node_modules
+
+services:
+  - postgresql
+
+before_install: dpkg --compare-versions `npm -v` ge 6.0 || npm i -g npm@latest
+
+install:
+  - npm ci
+
+before_script:
+  - export NODE_ENV="development"
+  - export PGUSER="postgres"
+  - export PGPASSWORD=""
+  - psql -c "create database traffic_counter"
+
+script:
+  - npx knex migrate:latest
+  - npm test

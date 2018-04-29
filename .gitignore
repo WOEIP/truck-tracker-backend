@@ -1,0 +1,17 @@
+# System generated files
+*.log
+*.lnk
+.DS_Store
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# Secrets
+config/secret
+
+# Packages
+node_modules
+
+# Testing/Coverage/Lint
+coverage
+.nyc_output
