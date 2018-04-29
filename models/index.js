@@ -6,7 +6,6 @@ const {Model, snakeCaseMappers} = require('objection');
 Model.knex(require('../lib/knex'));
 
 class BaseModel extends Model {
-
   static get modelPaths() {
     return [__dirname];
   }
@@ -14,7 +13,6 @@ class BaseModel extends Model {
   static get columnNameMappers() {
     return snakeCaseMappers();
   }
-
 }
 
 module.exports = {BaseModel};

@@ -13,7 +13,6 @@ services:
   - postgresql
 
 before_install: dpkg --compare-versions `npm -v` ge 6.0 || npm i -g npm@latest
-
 install:
   - npm ci
 
@@ -25,4 +24,5 @@ before_script:
 
 script:
   - npx knex migrate:latest
+  - npm run lint
   - npm test

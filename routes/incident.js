@@ -3,8 +3,7 @@
 const Router = require('koa-router');
 const parser = require('koa-body');
 
-const Incident = require('../models/Incident');
-const {ValidationError} = Incident;
+const Incident = require('../models/incident');
 
 const parsers = {
   query: parser({urlencoded: true, multipart: false, json: false}),
@@ -14,15 +13,17 @@ const parsers = {
 
 const incident = new Router();
 
-incident.get('/', async (ctx, next) => {
+incident.get('/', async ctx => {
   ctx.body = await Incident.query();
 });
 
-incident.post('/', parsers.json, async (ctx, next) => {
-  ctx.body = await Incident.query().insert(ctx.request.body).returning('*');
+incident.post('/', parsers.json, async ctx => {
+  ctx.body = await Incident.query()
+    .insert(ctx.request.body)
+    .returning('*');
 });
 
-incident.get('/:id', async (ctx, next) => {
+incident.get('/:id', async ctx => {
   ctx.body = await Incident.query().findById(ctx.params.id);
 });
 

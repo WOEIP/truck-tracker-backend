@@ -3,9 +3,8 @@
 const {TRUCK_TYPES} = require('../lib/constants');
 
 async function up(knex) {
-
-    console.log(TRUCK_TYPES.values);
-  await knex.schema.createTable('incident', function(table) {
+  await knex.schema.createTable('incident', table => {
+    // prettier-ignore
     table.uuid('id').primary().defaultTo(knex.raw('uuid_generate_v4()'));
     table.enum('truck_type', TRUCK_TYPES.values).notNullable();
 
@@ -28,7 +27,6 @@ async function up(knex) {
 
     table.timestamps(true, true);
   });
-
 }
 
 async function down(knex) {
