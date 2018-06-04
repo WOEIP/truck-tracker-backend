@@ -26,3 +26,12 @@ script:
   - npx knex migrate:latest
   - npm run lint
   - npm test
+
+jobs:
+  include:
+    - stage: deploy
+      node_js: 8
+      script:
+        - echo $SSH_PRIVATE_KEY | base64 --decode | openssl aes-256-cbc -K $encrypted_f631e6304a5e_key -iv $encrypted_f631e6304a5e_iv -out ~/.ssh/id_rsa -d
+        - rsync -azP --delete deploy@trucktracker.net:~/sites/backend
+
