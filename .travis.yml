@@ -29,10 +29,11 @@ script:
 
 jobs:
   include:
-    - stage: deploy
+    - stage: publish
       node_js: 8
       script:
         - echo $SSH_PRIVATE_KEY | base64 --decode | openssl aes-256-cbc -K $encrypted_f631e6304a5e_key -iv $encrypted_f631e6304a5e_iv -out ~/.ssh/id_rsa -d
+        - chmod 600 ~/.ssh/id_rsa
         - cat .known_hosts > ~/.ssh/known_hosts
         - rsync -azP --delete deploy@trucktracker.net:~/sites/backend
 
