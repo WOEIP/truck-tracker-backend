@@ -17,7 +17,7 @@ async function up(knex) {
     table.decimal('end_lon', 9, 6).notNullable();
     table.string('license_plate');
     table.string('transport_company_name');
-    table.string('license_plate');
+    table.string('photo_folder_url');
     table.timestamps(true, true);
   });
 }
