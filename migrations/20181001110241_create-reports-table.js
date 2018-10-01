@@ -7,7 +7,7 @@ async function up(knex) {
     table.uuid('id').primary().defaultTo(knex.raw('uuid_generate_v4()'));
     table.enum('truck_type', TRUCK_TYPES.values).notNullable();
     table.timestamp('truck_seen_at').notNullable();
-    table.foreign('reporter_id').references('users.id');
+    table.uuid('reporter_id').references('users.id');
     table.timestamp('reported_at').notNullable().defaultTo(knex.fn.now());
     table.boolean('was_idling_p').notNullable().defaultTo(false);
     table.integer('idling_duration_mins').defaultTo(0);
