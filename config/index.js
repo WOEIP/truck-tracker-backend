@@ -1,5 +1,7 @@
 'use strict';
 
+//TODO .pgpass auth
+
 const path = require('path');
 const convict = require('convict');
 

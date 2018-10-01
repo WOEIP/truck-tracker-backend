@@ -3,6 +3,6 @@
   "database": {
     "host": "localhost",
     "port": 5432,
-    "database": "traffic_counter"
+    "database": "truck_tracker_dev"
   }
 }
