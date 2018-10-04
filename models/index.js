@@ -2,7 +2,7 @@
 
 const {Model, snakeCaseMappers} = require('objection');
 
-// Probide the knex instance to objection
+// Provide the knex instance to objection
 Model.knex(require('../lib/knex'));
 
 class BaseModel extends Model {

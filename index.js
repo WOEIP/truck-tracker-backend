@@ -26,7 +26,7 @@ app.use(router.allowedMethods());
 
 /**
  * module.parent is set if this file is being imported by another file
- * We only want to start listening if this as the first file loaded
+ * We only want to start listening if this is the first file loaded
  */
 if (!module.parent) {
   app.listen(config.get('port'));

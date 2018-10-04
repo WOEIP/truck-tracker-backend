@@ -9,9 +9,9 @@ const {BaseModel} = require('.');
 const ONE_DAY = 60 * 24; // 60 minute/hour * 24 hour/day
 const UNIX_EPOCH_MAX = 2147483647; // 2^31 - 1
 
-class Incident extends BaseModel {
+class Reports extends BaseModel {
   static get tableName() {
-    return 'incident';
+    return 'reports';
   }
 
   static get jsonSchema() {
@@ -77,4 +77,4 @@ class Incident extends BaseModel {
   }
 }
 
-module.exports = Incident;
+module.exports = Reports;
