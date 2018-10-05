@@ -17,9 +17,18 @@ class Reports extends BaseModel {
   static get jsonSchema() {
     return {
       type: 'object',
-      required: ['truckType', 'start', 'end', 'reportedAt'],
+      required: ['truckType',
+                 'truckSeenAt',
+                 'start',
+                 'end',
+                 'reporterId'],
       properties: {
         truckType: {enum: TRUCK_TYPES.values},
+        truckSeenAt: {type: 'number', minimum: 0, maximum: UNIX_EPOCH_MAX},
+        reporterId: {type: 'string', format: 'uuid'},
+        reportedAt: {type: 'number', minimum: 0, maximum: UNIX_EPOCH_MAX},
+        wasIdlingP: {type: 'boolean'},
+        idlingDurationMins: {type: 'number', minimum: 0, maximum: ONE_DAY},
         start: {
           required: ['lat', 'lon'],
           lat: {type: 'number', minimum: -90, maximum: 90},
@@ -30,8 +39,9 @@ class Reports extends BaseModel {
           lat: {type: 'number', minimum: -90, maximum: 90},
           lon: {type: 'number', minimum: -180, maximum: 180},
         },
-        idlingDuration: {type: 'number', minimum: 0, maximum: ONE_DAY},
-        reportedAt: {type: 'number', minimum: 0, maximum: UNIX_EPOCH_MAX},
+        licensePlate: {type: 'string'},
+        transportCompanyName:  {type: 'string'},
+        photoFolderUrl:  {type: 'string'},
       },
     };
   }
@@ -42,8 +52,12 @@ class Reports extends BaseModel {
     /* eslint-disable camelcase */
     const formatted = _.pick(json, [
       'truck_type',
-      'idling_duration',
-      'reported_at',
+      'reporter_id',
+      'was_idling_p',
+      'idling_duration_mins ',
+      'license_plate',
+      'transport_company_name',
+      'photo_folder_url'
     ]);
     formatted.start_lat = _.get(json, 'start.lat');
     formatted.start_lon = _.get(json, 'start.lon');
@@ -51,8 +65,11 @@ class Reports extends BaseModel {
     formatted.end_lon = _.get(json, 'end.lon');
 
     // convert unix timestamps into ISO 8601 strings for postgres
+    formatted.truck_seen_at = moment.unix(json.truck_seen_at).format();
     formatted.reported_at = moment.unix(json.reported_at).format();
-    /* eslint-enable */
+    formatted.created_at = moment.unix(json.created_at).format();
+    formatted.updated_at = moment.unix(json.updated_at).format();
+   /* eslint-enable */
 
     return formatted;
   }
@@ -60,7 +77,14 @@ class Reports extends BaseModel {
   $parseDatabaseJson(json) {
     json = super.$parseDatabaseJson(json);
 
-    const formatted = _.pick(json, ['id', 'truckType', 'idlingDuration']);
+    const formatted = _.pick(json, [
+      'truckType',
+      'reporterId',
+      'wasIdlingP',
+      'idlingDurationMins',
+      'licensePlate',
+      'transportCompanyName',
+      'photoFolderUrl']);
     formatted.start = {
       lat: parseFloat(json.startLat),
       lon: parseFloat(json.startLon),
@@ -69,6 +93,7 @@ class Reports extends BaseModel {
       lat: parseFloat(json.endLat),
       lon: parseFloat(json.endLon),
     };
+    formatted.truckSeenAt = moment(json.truckSeenAt).unix();
     formatted.reportedAt = moment(json.reportedAt).unix();
     formatted.createdAt = moment(json.createdAt).unix();
     formatted.updatedAt = moment(json.updatedAt).unix();
