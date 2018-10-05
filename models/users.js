@@ -80,7 +80,7 @@ class Users extends BaseModel {
       'admin_p']);
 
     formatted.dateRegistered = moment(json.dateRegistered).unix();
-    formatted.lastLogin = moment(json.lastLogin.unix();
+    formatted.lastLogin = moment(json.lastLogin).unix();
     formatted.createdAt = moment(json.createdAt).unix();
     formatted.updatedAt = moment(json.updatedAt).unix();
 
