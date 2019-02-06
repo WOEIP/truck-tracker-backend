@@ -1,6 +1,7 @@
 'use strict';
 
 const _ = require('lodash');
+const logger = require('./../lib/logger.js');
 const moment = require('moment');
 
 const {TRUCK_TYPES} = require('../lib/constants');
@@ -65,10 +66,20 @@ class Reports extends BaseModel {
     formatted.end_lon = _.get(json, 'end.lon');
 
     // convert unix timestamps into ISO 8601 strings for postgres
-    formatted.truck_seen_at = moment.unix(json.truck_seen_at).format();
-    formatted.reported_at = moment.unix(json.reported_at).format();
-    formatted.created_at = moment.unix(json.created_at).format();
-    formatted.updated_at = moment.unix(json.updated_at).format();
+    // logger.info(json.truck_seen_at);
+    // logger.info(moment.unix(json.truck_seen_at));
+
+    formatted.truck_seen_at = moment.unix(json.truck_seen_at);
+    formatted.reported_at = moment.unix(json.reported_at);
+    // formatted.created_at = moment.unix(json.created_at);
+    // formatted.updated_at = moment.unix(json.updated_at);
+
+    // logger.info('===START===');
+    // logger.info(formatted.truck_seen_at);
+    // logger.info(formatted.reported_at);
+    // logger.info(formatted.created_at);
+    // logger.info(formatted.updated_at);
+
    /* eslint-enable */
 
     return formatted;
