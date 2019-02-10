@@ -5,12 +5,24 @@ const path = require('path');
 const Koa = require('koa');
 const serve = require('koa-static');
 const cors = require('@koa/cors');
+const session = require('koa-session');
+const passport = require('koa-passport');
 
 const config = require('./config');
 const router = require('./routes');
 const validationErrorHandler = require('./lib/middleware/validation-error-handler.js');
 
 const app = new Koa();
+
+app.keys = ['TODO put a secret key here'];
+app.use(session(app));
+
+
+
+// authentication
+require('./lib/auth.js');
+app.use(passport.initialize());
+app.use(passport.session());
 
 app.use(
   cors({
