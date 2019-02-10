@@ -8,7 +8,7 @@ const cors = require('@koa/cors');
 
 const config = require('./config');
 const router = require('./routes');
-const middleware = require('./lib/middleware');
+const validationErrorHandler = require('./lib/middleware/validation-error-handler.js');
 
 const app = new Koa();
 
@@ -19,7 +19,7 @@ app.use(
     allowHeaders: ['Origin', 'Content-Type'],
   }),
 );
-app.use(middleware.validationErrorHandler);
+app.use(validationErrorHandler);
 app.use(router.routes());
 app.use(router.allowedMethods());
 
