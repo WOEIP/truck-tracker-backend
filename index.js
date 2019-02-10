@@ -12,7 +12,6 @@ const middleware = require('./lib/middleware');
 
 const app = new Koa();
 
-app.use(serve(path.join(__dirname, 'static')));
 app.use(
   cors({
     // TODO this should prolly be in config

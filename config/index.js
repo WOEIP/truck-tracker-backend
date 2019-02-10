@@ -54,7 +54,9 @@ const config = convict({
   },
 });
 
-const configFile = `${config.get('env')}.json`;
+//const configFile = `${config.get('env')}.json`;
+
+const configFile = 'development.json';
 
 config.loadFile(path.resolve(__dirname, configFile));
 
