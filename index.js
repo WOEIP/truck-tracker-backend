@@ -17,16 +17,13 @@ const app = new Koa();
 app.keys = ['TODO put a secret key here'];
 app.use(session(app));
 
-
-
-// authentication
 require('./lib/auth.js');
 app.use(passport.initialize());
 app.use(passport.session());
 
 app.use(
   cors({
-    // TODO this should prolly be in config
+    // TODO this should probably be in config
     origin: false,
     credentials: true,
     allowHeaders: ['Origin', 'Content-Type'],

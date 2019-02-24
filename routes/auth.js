@@ -11,14 +11,19 @@ const parsers = {
   json: parser({urlencoded: false, multipart: false, json: true}),
 };
 
-const login = new Router();
+const auth = new Router();
 
-login.post('/', parsers.json, async ctx => {
-  console.log(ctx.request.body.username);
+auth.get('/', parsers.json, async ctx => {
+    ctx.body = { loggedIn: ctx.isAuthenticated() };
+});
+
+auth.post('/login', parsers.json, async ctx => {
   return passport.authenticate('local', (err, user, info, status) => {
     if (user) {
       ctx.login(user);
       ctx.status = 200;
+      console.log('HOPP');
+      console.log(ctx.isAuthenticated());
       ctx.body = 'Login successful';
     } else {
       ctx.status = 400;
@@ -27,4 +32,17 @@ login.post('/', parsers.json, async ctx => {
   })(ctx);
 });
 
-module.exports = login;
+auth.post('/logout', parsers.json, async ctx => {
+  router.get('/auth/logout', async (ctx) => {
+  if (ctx.isAuthenticated()) {
+    ctx.logout();
+    ctx.redirect('/');
+  } else {
+    ctx.body = { success: false };
+    ctx.throw(401);
+  }
+});
+
+});
+
+module.exports = auth;

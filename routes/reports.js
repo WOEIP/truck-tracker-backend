@@ -25,6 +25,9 @@ reports.get('/', async ctx => {
 });
 
 reports.post('/', parsers.json, async ctx => {
+  console.log('HERE');
+//  console.log(ctx.request);
+  console.log(ctx.isAuthenticated());
   ctx.body = await Reports.query()
     .insert(ctx.request.body)
     .returning('*');
