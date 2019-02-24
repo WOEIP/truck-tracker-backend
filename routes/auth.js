@@ -22,7 +22,6 @@ auth.post('/login', parsers.json, async ctx => {
     if (user) {
       ctx.login(user);
       ctx.status = 200;
-      console.log('HOPP');
       console.log(ctx.isAuthenticated());
       ctx.body = 'Login successful';
     } else {
@@ -33,16 +32,14 @@ auth.post('/login', parsers.json, async ctx => {
 });
 
 auth.post('/logout', parsers.json, async ctx => {
-  router.get('/auth/logout', async (ctx) => {
   if (ctx.isAuthenticated()) {
     ctx.logout();
-    ctx.redirect('/');
+    ctx.status = 200;
+    ctx.body = 'Logout successful';
   } else {
     ctx.body = { success: false };
     ctx.throw(401);
   }
-});
-
 });
 
 module.exports = auth;
