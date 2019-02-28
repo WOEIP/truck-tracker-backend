@@ -56,8 +56,8 @@ class Reports extends BaseModel {
       'truck_type',
       'reporter_id',
       'engine_was_running_p',
-      'truck_was_moving_p,
-      'idling_duration_mins ',
+      'truck_was_moving_p',
+      'idling_duration_mins',
       'license_plate',
       'transport_company_name',
       'photo_folder_url'
@@ -69,6 +69,7 @@ class Reports extends BaseModel {
 
     // convert unix timestamps into ISO 8601 strings for postgres
     // TODO do we need this
+
     formatted.truck_seen_at = moment.unix(json.truck_seen_at);
     formatted.reported_at = moment.unix(json.reported_at);
     formatted.created_at = moment.unix(json.created_at);

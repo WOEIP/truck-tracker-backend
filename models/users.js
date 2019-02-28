@@ -55,10 +55,10 @@ class Users extends BaseModel {
     ]);
 
     // convert unix timestamps into ISO 8601 strings for postgres
-    formatted.date_registered = moment.unix(json.date_registered).format();
-    formatted.last_login = moment.unix(json.last_login).format();
-    formatted.created_at = moment.unix(json.created_at).format();
-    formatted.updated_at = moment.unix(json.updated_at).format();
+    formatted.date_registered = moment.unix(json.date_registered);
+    formatted.last_login = moment.unix(json.last_login);
+    formatted.created_at = moment.unix(json.created_at);
+    formatted.updated_at = moment.unix(json.updated_at);
     /* eslint-enable */
 
     return formatted;
