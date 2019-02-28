@@ -28,8 +28,9 @@ class Reports extends BaseModel {
         truckSeenAt: {type: 'number', minimum: 0, maximum: UNIX_EPOCH_MAX},
         reporterId: {type: 'string', format: 'uuid'},
         reportedAt: {type: 'number', minimum: 0, maximum: UNIX_EPOCH_MAX},
-        wasIdlingP: {type: 'boolean'},
-        idlingDurationMins: {type: 'number', minimum: 0, maximum: ONE_DAY},
+        engineWasRunningP: {type: 'boolean'},
+        truckWasMovingP: {type: 'boolean'},
+        idlingDuration: {type: 'number', minimum: 0, maximum: ONE_DAY},
         start: {
           required: ['lat', 'lon'],
           lat: {type: 'number', minimum: -90, maximum: 90},
@@ -54,7 +55,8 @@ class Reports extends BaseModel {
     const formatted = _.pick(json, [
       'truck_type',
       'reporter_id',
-      'was_idling_p',
+      'engine_was_running_p',
+      'truck_was_moving_p,
       'idling_duration_mins ',
       'license_plate',
       'transport_company_name',
@@ -66,19 +68,13 @@ class Reports extends BaseModel {
     formatted.end_lon = _.get(json, 'end.lon');
 
     // convert unix timestamps into ISO 8601 strings for postgres
-    // logger.info(json.truck_seen_at);
-    // logger.info(moment.unix(json.truck_seen_at));
-
+    // TODO do we need this
     formatted.truck_seen_at = moment.unix(json.truck_seen_at);
     formatted.reported_at = moment.unix(json.reported_at);
-    // formatted.created_at = moment.unix(json.created_at);
-    // formatted.updated_at = moment.unix(json.updated_at);
+    formatted.created_at = moment.unix(json.created_at);
+    formatted.updated_at = moment.unix(json.updated_at);
 
-    // logger.info('===START===');
-    // logger.info(formatted.truck_seen_at);
-    // logger.info(formatted.reported_at);
-    // logger.info(formatted.created_at);
-    // logger.info(formatted.updated_at);
+    // logger.info('TODO logging');
 
    /* eslint-enable */
 
@@ -91,7 +87,8 @@ class Reports extends BaseModel {
     const formatted = _.pick(json, [
       'truckType',
       'reporterId',
-      'wasIdlingP',
+      'engineWasRunningP',
+      'truckWasMovingP',
       'idlingDurationMins',
       'licensePlate',
       'transportCompanyName',

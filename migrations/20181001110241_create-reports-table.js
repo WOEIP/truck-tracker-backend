@@ -9,7 +9,8 @@ async function up(knex) {
     table.timestamp('truck_seen_at').notNullable();
     table.uuid('reporter_id').references('users.id');
     table.timestamp('reported_at').notNullable().defaultTo(knex.fn.now());
-    table.boolean('was_idling_p').notNullable().defaultTo(false);
+    table.boolean('engine_was_running_p').notNullable().defaultTo(false);
+    table.boolean('truck_was_moving_p').notNullable().defaultTo(false);
     table.integer('idling_duration_mins').defaultTo(0);
     table.decimal('start_lat', 9, 6).notNullable();
     table.decimal('start_lon', 9, 6).notNullable();
