@@ -68,16 +68,17 @@ class Users extends BaseModel {
     json = super.$parseDatabaseJson(json);
 
     const formatted = _.pick(json, [
+      'id',
       'username',
       'firstName',
       'lastName',
       'email',
       'zipcode',
       'address',
-      'local_resident_p',
-      'active_p',
-      'pw_hash',
-      'admin_p']);
+      'localResidentP',
+      'activeP',
+      'pwHash',
+      'adminP']);
 
     formatted.dateRegistered = moment(json.dateRegistered).unix();
     formatted.lastLogin = moment(json.lastLogin).unix();
