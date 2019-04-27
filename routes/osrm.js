@@ -17,12 +17,17 @@ osrm.get('/', async ctx => {
 });
 
 osrm.get('/getroute/:coordinates', parsers.json, async ctx => {
-  //if(ctx.isAuthenticated()) {
-    console.log(OSRMService);
-    let resp = OSRMService.getRoute(ctx.params.coordinates);
-    ctx.status = 200;
-    ctx.body = ctx.params.coordinates;
-  //}
+  if(ctx.isAuthenticated()) {
+    let resp = await OSRMService.getRoute(ctx.params.coordinates);
+    if(resp) {
+      ctx.status = 200;
+      ctx.body = resp;
+    } else {
+      ctx.status = 503;
+      ctx.body = "OSRM routing unsuccessful";
+    }
+
+  }
 });
 
 
