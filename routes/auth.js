@@ -23,7 +23,7 @@ auth.post('/login', parsers.json, async ctx => {
       ctx.login(user);
       ctx.status = 200;
       console.log(ctx.isAuthenticated());
-      ctx.body = 'Login successful';
+      ctx.body = user;
     } else {
       ctx.status = 400;
       ctx.body = 'Bummer!';
