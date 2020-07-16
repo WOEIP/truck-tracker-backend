@@ -31,7 +31,7 @@
     "koa-router": "^7.4.0",
     "koa-session": "^5.10.1",
     "koa-static": "^4.0.2",
-    "lodash": "^4.17.10",
+    "lodash": "^4.17.19",
     "moment": "^2.22.1",
     "objection": "^1.1.7",
     "passport": "^0.4.0",
