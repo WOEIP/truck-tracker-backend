@@ -23,7 +23,7 @@
   "dependencies": {
     "@koa/cors": "^2.2.1",
     "bcryptjs": "^2.4.3",
-    "convict": "^4.2.0",
+    "convict": "^6.2.3",
     "knex": "^0.14.6",
     "koa": "^2.5.1",
     "koa-body": "^2.5.0",
@@ -39,7 +39,7 @@
     "pg": "^7.4.1"
   },
   "devDependencies": {
-    "ava": "^0.25.0",
+    "ava": "^5.1.0",
     "axios": "^0.18.0",
     "incito": "^1.1.1",
     "nodemon": "^1.17.3",
